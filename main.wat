@@ -125,6 +125,43 @@
 		i32.and
 	)
 
+	(func $inRange (param $low i32) (param $high) (param $value i32) (result i32)
+		(i32.and
+			(i32.ge_s (get_local $value) (get_local $low))
+			(i32.lt_s (get_local $value) (get_local $high))
+		)
+	)
+
+	(func $getCell_2 (param $x i32) (param $y i32) (result i32)
+		(if (result i32)
+			(block (result i32)
+				(i32.and
+					(call $inRange
+						(i32.const 0)
+						(i32.const 50)
+						(get_local $x)
+					)
+					(call $inRange
+						(i32.const 0)
+						(i32.const 50)
+						(get_local $y)
+					)
+				)
+			)
+		)
+		(then
+			(i32.load
+				(call $offsetFromCoordinate
+					(get_local $x)
+					(get_local $y)
+				)
+			)
+		)
+		(else
+		 (i32.const 0)
+		)
+	)
+
 	(export "helloworld" (func 0))
 	(export "liveNeighbourCount" (func $liveNeighbourCount))
 	(export "offsetFromCoordinates" (func $offsetFromCoordinate))
