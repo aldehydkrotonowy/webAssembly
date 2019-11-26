@@ -1,0 +1,17 @@
+{
+  "name": "webasm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest *.wat *.js --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "wabt": "^1.0.12"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
+}
